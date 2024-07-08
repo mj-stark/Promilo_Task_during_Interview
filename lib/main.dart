@@ -1,6 +1,13 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
+
+
+/* As per the  requirements I didnt use any kind of fancy designs just I tried in the concept of iframe 
+Here the youtube video after getting completed will show the suggestions and the suggested video will be running in the same
+Screen.
+*/
+
+// the id of the youtube videos are taken
 
 const List<String> _videoIds = [
   'vxTW22y8zV8',
@@ -11,7 +18,7 @@ const List<String> _videoIds = [
   'aLUDhbQojxA',
 ];
 
-Future<void> main() async {
+void main() {
   runApp(const YoutubeApp());
 }
 
@@ -21,7 +28,7 @@ class YoutubeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Youtube Player IFrame Demo',
+      title: 'Youtube Player',
       theme: ThemeData.from(
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.deepPurple,
@@ -45,11 +52,11 @@ class YoutubeVideo extends StatefulWidget {
 class _YoutubeVideoState extends State<YoutubeVideo> {
   late YoutubePlayerController _controller;
 
+  // initializing the controls and youtube video id in the controller
   @override
   void initState() {
     super.initState();
     _controller = YoutubePlayerController(
-      
       params: const YoutubePlayerParams(
         showControls: true,
         mute: false,
@@ -58,12 +65,7 @@ class _YoutubeVideoState extends State<YoutubeVideo> {
       ),
     );
 
-    _controller.setFullScreenListener(
-      (isFullScreen) {
-        log('${isFullScreen ? 'Entered' : 'Exited'} Fullscreen.');
-      },
-    );
-
+    // the the total video id are been loaded here
     _controller.loadPlaylist(
       list: _videoIds,
       listType: ListType.playlist,
@@ -71,6 +73,8 @@ class _YoutubeVideoState extends State<YoutubeVideo> {
     );
   }
 
+
+  // here the youtube video will be running in the iframe (as per the requirements I used iframe concept here )
   @override
   Widget build(BuildContext context) {
     return YoutubePlayerScaffold(
@@ -94,6 +98,8 @@ class _YoutubeVideoState extends State<YoutubeVideo> {
                         ],
                       ),
                     ),
+
+                    // Here you can also add any other controls like buttons to choose the videos in the list also 
                     Expanded(
                       flex: 2,
                       child: SingleChildScrollView(
@@ -104,7 +110,6 @@ class _YoutubeVideoState extends State<YoutubeVideo> {
                   ],
                 );
               }
-
               return ListView(
                 children: [
                   player,
