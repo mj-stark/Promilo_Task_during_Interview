@@ -89,7 +89,7 @@ class _YoutubeVideoState extends State<YoutubeVideo> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
-                      flex: 3,
+                      flex: 1,
                       child: Column(
                         children: [
                           player,
@@ -98,13 +98,7 @@ class _YoutubeVideoState extends State<YoutubeVideo> {
                     ),
 
                     // Here you can also add any other controls like buttons to choose the videos in the list also 
-                    Expanded(
-                      flex: 2,
-                      child: SingleChildScrollView(
-                        child: Container(
-                        ),
-                      ),
-                    ),
+                   
                   ],
                 );
               }
