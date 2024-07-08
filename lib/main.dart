@@ -12,10 +12,6 @@ Screen.
 const List<String> _videoIds = [
   'vxTW22y8zV8',
   'uFM7bLuCrKo',
-  'RU7M2RwW42U',
-  'EOeQ2ojUhGM',
-  'y8S_UIxHzH4',
-  'aLUDhbQojxA',
 ];
 
 void main() {
@@ -58,6 +54,7 @@ class _YoutubeVideoState extends State<YoutubeVideo> {
     super.initState();
     _controller = YoutubePlayerController(
       params: const YoutubePlayerParams(
+        strictRelatedVideos: false,
         showControls: true,
         mute: false,
         showFullscreenButton: true,
@@ -68,6 +65,7 @@ class _YoutubeVideoState extends State<YoutubeVideo> {
     // the the total video id are been loaded here
     _controller.loadPlaylist(
       list: _videoIds,
+      index: 1,
       listType: ListType.playlist,
       startSeconds: 0,
     );
